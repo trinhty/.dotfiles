@@ -1,2 +1,2 @@
-#WIP Dotfiles for Ty
+# On-going configuration files  
 Beware!!!!
