@@ -27,6 +27,14 @@ set noswapfile
 set laststatus=0
 
 
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
 noremap <up> :echoerr "Umm, use k instead"<CR>
 noremap <down> :echoerr "Umm, use j instead"<CR>
 noremap <left> :echoerr "Umm, use h instead"<CR>
