@@ -6,3 +6,4 @@ ln -sf $PWD/vimrc ~/.vimrc
 ls -l ~/.vimrc
 ln -sf $PWD/bashrc ~/.bashrc
 ls -l ~/.bashrc
+ln -sf $PWD/alacritty ~/.alacritty.yml
