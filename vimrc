@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -9,6 +8,11 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 colorscheme gruvbox
 let g:ale_set_highlights = 0
@@ -17,16 +21,17 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enable = 1
 let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 let g:ale_linters = {'javascript': ['eslint']}
+au FocusGained,BufEnter * :checktime
 nmap <C-n> :NERDTreeToggle<CR>
+set background=dark
 set number "turn on line numbers
 syntax enable
 set cursorline
-set clipboard=unnamedplus
 set ruler
 set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set smartindent
 set smarttab
 set autoindent
@@ -34,6 +39,23 @@ set nobackup
 set noswapfile
 set laststatus=0
 set encoding=UTF-8
+set relativenumber
+
+" This fixes tmux + vim colorscheme
+if &term =~ '256color'
+    set t_ut=
+endif 
+set t_Co=256
+
+" Split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" open fzf
+nnoremap <silent> <C-e> :GFiles<CR>
+
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 nmap <F2> <Plug>(coc-rename)
@@ -43,17 +65,17 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 
 let g:coc_global_extensions = [
     \ 'coc-snippets',
-    \ 'coc-pairs',
     \ 'coc-tsserver',
     \ 'coc-eslint',
     \ 'coc-prettier',
     \ 'coc-json',
+    \ 'coc-pairs'
     \ ]
 " cursor changes between different modes
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
-hi Visual  guifg=#000000 guibg=#FFFFFF gui=none
+
 " coc config
 set hidden
 set nowritebackup
@@ -85,9 +107,6 @@ endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -197,3 +216,5 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
