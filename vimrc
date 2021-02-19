@@ -13,6 +13,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 call plug#end()
 colorscheme gruvbox
 let g:ale_set_highlights = 0
