@@ -30,3 +30,6 @@ sudo pacman -S ttf-fira-code
 
 # Installing Yay
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd . &&  rm -rf yay
+
+# Installing fd and fzf
+sudo pacman -S fzf fd
