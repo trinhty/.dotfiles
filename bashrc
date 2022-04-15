@@ -2,6 +2,11 @@
 # ~/.bashrc
 #
 
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/share/powerline/bindings/bash/powerline.sh
+
 # If not running interactively, don't do anything
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -24,7 +29,7 @@ print_before_the_prompt () {
 alias ls='ls --color=auto'
 PROMPT_COMMAND=print_before_the_prompt
 PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-PS1="$EMOJI >"
+PS1="$EMOJI>"
 LS_COLORS="di=1;31" 
 
 export NVM_DIR="$HOME/.nvm"
