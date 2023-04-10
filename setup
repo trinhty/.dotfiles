@@ -1,35 +1,33 @@
-#!/bin/bash
-vcprompturl=https://raw.githubusercontent.com/djl/vcprompt/master/bin/vcprompt
-nvm=https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh
+#!/usr/bin/env bash
+#
 
-ln -sf $PWD/bashconfig ~/.bash_aliases
-ls -l ~/.bash_aliases
-ln -sf $PWD/vimrc ~/.vimrc
-ls -l ~/.vimrc
-ln -sf $PWD/bashrc ~/.bashrc
-ls -l ~/.bashrc
-ln -sf $PWD/alacritty ~/.alacritty.yml
-ls -l ~/.alacritty.yml
-ln -sf $PWD/tmux.conf ~/.tmux.conf
-ls -l ~/.tmux.conf
+# Detect distribution and set package manager
+if command -v apt >/dev/null 2>&1; then
+	package_manager="apt install -y"
+elif command -v yum >/dev/null 2>&1; then
+	package_manager="yum install -y"
+elif command -v pacman >/dev/null 2>&1; then
+	package_manager="pacman"
+	opts=(-Sy --noconfirm)
+else
+	echo "Error: Unhandled distribution"
+	exit 1
+fi
 
-# Installing vcprompt - Version Control Info
-mkdir -p ~/bin
-curl -sL ${vcprompturl} > ~/bin/vcprompt 
-chmod 755 ~/bin/vcprompt
+# Array of packages
+packages=(curl git neo-vim noto-fonts-emoji ttf-fira-code fzf fd nvm)
 
-# Installing nvm
-curl -o- ${nvm} | bash
-nvm install --lts
+# Install Packages
+for package in "${packages[@]}"; do
+	echo "Install $package using $package_manager"
+	sudo "$package_manager" "$opts" "$package"
+done
 
-# Installing emojis
-sudo pacman -S noto-fonts-emoji
-
-# Installing fira code
-sudo pacman -S ttf-fira-code
-
-# Installing Yay
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd . &&  rm -rf yay
-
-# Installing fd and fzf
-sudo pacman -S fzf fd
+pushd $DOTFILES
+for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
+do
+	echo "stow $folder"
+	stow -D $folder
+	stow $folder
+done
+popd
