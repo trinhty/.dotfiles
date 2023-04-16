@@ -8,20 +8,25 @@ elif command -v yum >/dev/null 2>&1; then
 	package_manager="yum install -y"
 elif command -v pacman >/dev/null 2>&1; then
 	package_manager="pacman"
-	opts=(-Sy --noconfirm)
+	opts=(-Sy --noconfirm --needed)
 else
 	echo "Error: Unhandled distribution"
 	exit 1
 fi
 
 # Array of packages
-packages=(curl git neo-vim noto-fonts-emoji ttf-fira-code fzf fd nvm)
+packages=(curl git neovim noto-fonts-emoji ttf-fira-code fzf fd zsh)
 
 # Install Packages
-for package in "${packages[@]}"; do
-	echo "Install $package using $package_manager"
-	sudo "$package_manager" "$opts" "$package"
-done
+echo "Installing $package_manager with ${opts[@]} options and ${packages[@]}"
+sudo "$package_manager" "${opts[@]}" "${packages[@]}"
+
+# Setup Zsh because Bsh is for scrubs :) 
+echo "Changing shell to zsh"
+chsh -s $(which zsh)
+
+echo "Install Oh My Zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
