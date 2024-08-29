@@ -1,22 +1,43 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    //"height": 30, // Waybar height (to be removed for auto height)
-    //"width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
-    //Choose the order of the modules
-    "modules-left": ["wlr/workspaces", "hyprland/window", "custom/media"],
-    "modules-center": [],
-    "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight",  "battery", "clock", "tray"],
-    //Modules configuration
-     "wlr/workspaces": {
-         "disable-scroll": true,
-         "all-outputs": true,
-         "format": "{name}:{icon}",
-         "format-icons": {
-             "default":""
-         }
-     },
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "pulseaudio", 
+        "network", 
+        // "network#speed", 
+        "cpu", 
+        "memory", 
+        "temperature", 
+        "backlight",  
+        "battery", 
+        "tray"
+    ],
+// "hyprland/workspaces": {
+//         "disable-scroll": true,
+//         "all-outputs": true,
+//         "format": "{name}:{icon}",
+//         "format-icons": {
+//             "default":""
+//         }
+//     },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "urgent": "",
+        "active": "",
+        "default": ""
+      },
+      "sort-by-number": true
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -69,11 +90,11 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}%",
+        "format": "{usage}% ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% "
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -81,7 +102,7 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -94,8 +115,8 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon} {power}W|{time}",
-        "format-charging": "{capacity}% ",
+        "format": "{capacity}% {icon}   {power}W|{time}",
+        "format-charging": "{capacity}% \udb80\udc85",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
@@ -106,12 +127,42 @@
         "bat": "BAT2"
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        /* "format-wifi": "{essid} ({signalStrength}%) ", */
+        "format-wifi": "{icon}",
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "<big>⚠</big>",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ],
+        "on-click": "~/.scripts/rofi-wifi"
+    },
+    "network#speed": {
+        "interval": 1,
+        "format": "{ifname}",
+        "format-wifi": " {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-ethernet": "󰌘  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-disconnected": "󰌙",
+        "tooltip-format": "{ipaddr}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "min-length": 20,
+        "max-length": 24,
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

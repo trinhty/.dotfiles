@@ -1,13 +1,15 @@
+@import "mocha.css";
+
 * {
     border: none;
     border-radius: 10;
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Liberation Mono;
-    min-height: 20px;
+    font-family: "JetbrainsMono Nerd Font";
+    font-size: 16px;
+    min-height: 4px;
 }
 
 window#waybar {
-    background: black;
+    background: transparent;
     margin-right: 8px;
     margin-left: 8px;
 }
@@ -17,10 +19,16 @@ window#waybar.hidden {
 }
 
 #workspaces {
-    margin-right: 8px;
-    border-radius: 20px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
     transition: none;
-    background: #000000;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
 }
 
 #workspaces button {
@@ -88,11 +96,18 @@ window#waybar.hidden {
 }
 
 #clock {
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px;
     transition: none;
-    color: #ffffff;
 }
 
 #custom-weather {
@@ -125,12 +140,16 @@ window#waybar.hidden {
 }
 
 #temperature {
-    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 8px;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 10px;
     transition: none;
-    color: #ffffff;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
 }
 
 #temperature.critical {
@@ -138,21 +157,29 @@ window#waybar.hidden {
 }
 
 #backlight {
-    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 8px;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 10px;
     transition: none;
-    color: #ffffff;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
 }
 
 #battery {
-    margin-right: 8px;
-    padding-left: 16px;
+    margin-top: 8px;
+    margin-left: 8px;
+    padding-left: 10px;
     padding-right: 16px;
     border-radius: 10px;
     transition: none;
-    color: #ffffff;
+    color: @subtext1;
+    background: @base;
+    border: 2.5px solid transparent;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
 }
 
 #battery.charging {
@@ -193,22 +220,56 @@ window#waybar.hidden {
 }
 
 #network {
-    color: white;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
 }
 
 #cpu {
-    color: white;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 16px;
+    padding-left: 16px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext0;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
 }
 
 #memory {
-    color: white;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    margin-right: 0px;
+    padding-left: 8px;
+    padding-right: 11px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext0;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
 }
 
 #window {
-    border-radius: 20px;
-    padding-left: 10px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    padding-left: 8px;
     padding-right: 10px;
-    color: white;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext0;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
 }
 
 @keyframes blink {
