@@ -45,6 +45,9 @@ vim.keymap.set('n', 'n', 'nzzzv')
 -- Find Previous, Center, then enter visual
 vim.keymap.set('n', 'N', 'Nzzzv')
 
+vim.keymap.set('n', '\\', '<cmd>lua MiniFiles.open()<CR>')
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
 -- Tabs
 vim.keymap.set('n', '<Tab>', 'gt')
 vim.keymap.set('n', '<S-Tab>', 'gT')
