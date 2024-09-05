@@ -103,7 +103,6 @@ window#waybar.hidden {
     background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
     margin-top: 8px;
     margin-bottom: 0px;
-    margin-left: 8px;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 10px;
@@ -118,31 +117,8 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-}
-
-#pulseaudio.muted {
-    color: #2a5c45;
-}
-
-#custom-mem {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-}
-
-#temperature {
     margin-top: 8px;
     margin-bottom: 0px;
-    margin-left: 8px;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 10px;
@@ -152,16 +128,31 @@ window#waybar.hidden {
     background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
 }
 
+#pulseaudio.muted {
+    color: #2a5c45;
+}
+
+#temperature {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 4px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
 #temperature.critical {
-    background-color: #eb4d4b;
+    color: #eb4d4b;
 }
 
 #backlight {
     margin-top: 8px;
     margin-bottom: 0px;
-    margin-left: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 8px;
+    padding-right: 10px;
     border-radius: 10px;
     transition: none;
     border: 2.5px solid transparent;
@@ -171,7 +162,6 @@ window#waybar.hidden {
 
 #battery {
     margin-top: 8px;
-    margin-left: 8px;
     padding-left: 10px;
     padding-right: 16px;
     border-radius: 10px;
@@ -222,8 +212,7 @@ window#waybar.hidden {
 #network {
     margin-top: 8px;
     margin-bottom: 0px;
-    margin-left: 8px;
-    padding-left: 16px;
+    padding-left: 10px;
     padding-right: 16px;
     border-radius: 10px;
     transition: none;
@@ -235,7 +224,6 @@ window#waybar.hidden {
 #cpu {
     margin-top: 8px;
     margin-bottom: 0px;
-    margin-left: 16px;
     padding-left: 16px;
     padding-right: 10px;
     border-radius: 10px;
@@ -248,10 +236,9 @@ window#waybar.hidden {
 #memory {
     margin-top: 8px;
     margin-bottom: 0px;
-    margin-left: 8px;
     margin-right: 0px;
     padding-left: 8px;
-    padding-right: 11px;
+    padding-right: 16px;
     border-radius: 10px;
     transition: none;
     border: 2.5px solid transparent;
@@ -262,7 +249,6 @@ window#waybar.hidden {
 #window {
     margin-top: 8px;
     margin-bottom: 0px;
-    margin-left: 8px;
     padding-left: 8px;
     padding-right: 10px;
     border-radius: 10px;
