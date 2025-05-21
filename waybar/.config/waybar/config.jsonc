@@ -24,6 +24,7 @@
   //         }
   //     },
   "hyprland/workspaces": {
+    "all-outputs": true,
     "active-only": false,
     "format": "{icon}|{windows}",
     "on-click": "activate",
@@ -31,7 +32,7 @@
       "title<.*youtube.*>": "",
       "class<firefox>": "",
       "class<firefox> title<.*github.*>": "",
-      "class<webcord>": "",
+      "class<discord>": "",
       "Alacritty": "",
       "code": "󰨞",
       "class<obsidian>": "",
@@ -96,7 +97,7 @@
     "tooltip": false,
   },
   "memory": {
-    "format": "{}% ",
+    "format": "{used:0.1f}G/{total:0.1f}G ",
   },
   "temperature": {
     // "thermal-zone": 2,
