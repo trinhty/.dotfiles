@@ -1,0 +1,266 @@
+@import "mocha.css";
+
+* {
+    border: none;
+    border-radius: 10;
+    font-family: "JetbrainsMono Nerd Font";
+    font-size: 16px;
+    min-height: 4px;
+}
+
+window#waybar {
+    background: transparent;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
+#workspaces button {
+    transition: none;
+    padding: 5px;
+    font-size: 15px;
+}
+
+#workspaces button.persistent {
+    color: #7c818c;
+    font-size: 12px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    transition: none;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    border-radius: inherit;
+    color: #383c4a;
+    background: #7c818c;
+}
+
+#workspaces button.active {
+    color: white;
+}
+
+#language {
+    padding-left: 16px;
+    padding-right: 8px;
+    transition: none;
+    color: #ffffff;
+}
+
+#keyboard-state {
+    margin-right: 8px;
+    padding-right: 16px;
+    border-radius: 0px 10px 10px 0px;
+    transition: none;
+    color: #ffffff;
+}
+
+#custom-pacman {
+    padding-left: 16px;
+    padding-right: 8px;
+    border-radius: 10px 0px 0px 10px;
+    transition: none;
+    color: #ffffff;
+}
+
+#custom-mail {
+    margin-right: 8px;
+    padding-right: 16px;
+    border-radius: 0px 10px 10px 0px;
+    transition: none;
+    color: #ffffff;
+}
+
+#mode {
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    color: #ffffff;
+}
+
+#clock {
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+}
+
+#custom-weather {
+    padding-right: 16px;
+    border-radius: 0px 10px 10px 0px;
+    transition: none;
+    color: #ffffff;
+}
+
+#pulseaudio {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
+#pulseaudio.muted {
+    color: #2a5c45;
+}
+
+#temperature {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 4px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
+#temperature.critical {
+    color: #eb4d4b;
+}
+
+#backlight {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    padding-left: 8px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
+#battery {
+    margin-top: 8px;
+    padding-left: 10px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    color: @subtext1;
+    background: @base;
+    border: 2.5px solid transparent;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
+#battery.charging {
+    color: #ffffff;
+    background-color: #26A65B;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #ffbe61;
+    color: black;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#tray {
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    color: #ffffff;
+}
+
+#taskbar {
+    margin-right: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    color: #ffffff;
+}
+
+#network {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext1;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
+#cpu {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    padding-left: 16px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext0;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
+#memory {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    padding-left: 8px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext0;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
+#window {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    padding-left: 8px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    border: 2.5px solid transparent;
+    color: @subtext0;
+    background: linear-gradient(@crust, @crust) padding-box, linear-gradient(30deg, @blue, @teal) border-box;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
